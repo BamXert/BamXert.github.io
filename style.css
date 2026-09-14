@@ -29,34 +29,49 @@
 }
 
 
+
 /* ==================================================
    GENERAL
 ================================================== */
 
 * {
+
     margin: 0;
     padding: 0;
+
     box-sizing: border-box;
 }
 
+
 html,
 body {
+
     width: 100%;
     min-height: 100%;
 }
 
+
 body {
+
     min-height: 100vh;
+
     overflow: hidden;
 
     background:
+
         radial-gradient(
+
             circle at 50% 40%,
+
             var(--fondo-secundario),
+
             var(--fondo-principal) 58%,
+
             #00030a
+
         );
 }
+
 
 
 /* ==================================================
@@ -64,6 +79,7 @@ body {
 ================================================== */
 
 .escena {
+
     position: relative;
 
     width: 100%;
@@ -73,11 +89,13 @@ body {
 }
 
 
+
 /* ==================================================
    TÍTULO
 ================================================== */
 
 .titulo {
+
     position: absolute;
 
     top: 22px;
@@ -92,6 +110,7 @@ body {
         var(--fuente);
 
     font-size:
+
         clamp(
             3rem,
             5vw,
@@ -105,12 +124,19 @@ body {
     text-align: center;
 
     text-shadow:
-        0 0 4px rgba(255,255,255,.55),
-        0 0 10px rgba(255,255,255,.28),
-        0 0 18px rgba(255,255,255,.12);
+
+        0 0 4px
+        rgba(255,255,255,.55),
+
+        0 0 10px
+        rgba(255,255,255,.28),
+
+        0 0 18px
+        rgba(255,255,255,.12);
 
     z-index: 20;
 }
+
 
 
 /* ==================================================
@@ -118,6 +144,7 @@ body {
 ================================================== */
 
 .escena::before {
+
     content: "";
 
     position: absolute;
@@ -132,6 +159,7 @@ body {
     opacity: .50;
 
     box-shadow:
+
         5vw 14vh white,
         9vw 47vh white,
         13vw 76vh white,
@@ -156,11 +184,13 @@ body {
 }
 
 
+
 /* ==================================================
    ESTRELLAS BRILLANTES
 ================================================== */
 
 .estrella {
+
     position: absolute;
 
     width: 4px;
@@ -171,10 +201,14 @@ body {
     background: white;
 
     box-shadow:
+
         0 0 5px white,
-        0 0 12px rgba(255,255,255,.6);
+
+        0 0 12px
+        rgba(255,255,255,.6);
 
     animation:
+
         estrellaBrillo
         3.5s
         ease-in-out
@@ -183,11 +217,14 @@ body {
 
 
 .estrella-1 {
+
     top: 18%;
     left: 8%;
 }
 
+
 .estrella-2 {
+
     top: 37%;
     left: 20%;
 
@@ -195,7 +232,9 @@ body {
         .8s;
 }
 
+
 .estrella-3 {
+
     top: 72%;
     left: 12%;
 
@@ -203,7 +242,9 @@ body {
         1.7s;
 }
 
+
 .estrella-4 {
+
     top: 31%;
     left: 74%;
 
@@ -211,7 +252,9 @@ body {
         .4s;
 }
 
+
 .estrella-5 {
+
     top: 68%;
     left: 88%;
 
@@ -219,7 +262,9 @@ body {
         1.3s;
 }
 
+
 .estrella-6 {
+
     top: 20%;
     left: 61%;
 
@@ -227,7 +272,9 @@ body {
         2.1s;
 }
 
+
 .estrella-7 {
+
     top: 85%;
     left: 54%;
 
@@ -235,7 +282,9 @@ body {
         .9s;
 }
 
+
 .estrella-8 {
+
     top: 56%;
     left: 42%;
 
@@ -248,26 +297,32 @@ body {
 
     0%,
     100% {
+
         opacity: .25;
 
         transform:
             scale(.7);
     }
 
+
     50% {
+
         opacity: 1;
 
         transform:
             scale(1.35);
     }
+
 }
 
 
+
 /* ==================================================
-   LUNA GRANDE Y CENTRADA
+   LUNA INTERACTIVA
 ================================================== */
 
 .luna {
+
     position: absolute;
 
     top: 150px;
@@ -279,29 +334,65 @@ body {
     width: 150px;
     height: 150px;
 
+    padding: 0;
+
+    border: none;
+    outline: none;
+
+    appearance: none;
+
     border-radius: 50%;
 
+    cursor: pointer;
+
     background:
+
         radial-gradient(
+
             circle at 35% 30%,
+
             #ffffff 0%,
+
             #f4f4f4 40%,
+
             #dddddd 72%,
+
             #c5c5c5 100%
+
         );
 
     box-shadow:
-        0 0 10px rgba(255,255,255,.75),
-        0 0 24px rgba(255,255,255,.35),
-        0 0 45px rgba(255,255,255,.17);
+
+        0 0 10px
+        rgba(255,255,255,.75),
+
+        0 0 24px
+        rgba(255,255,255,.35),
+
+        0 0 45px
+        rgba(255,255,255,.17);
+
+    transition:
+
+        transform .35s ease,
+
+        box-shadow .35s ease,
+
+        filter .35s ease;
+
+    overflow: visible;
 
     z-index: 9;
 }
 
 
-/* cráteres */
+
+/* ==================================================
+   CRÁTERES
+================================================== */
 
 .luna::before {
+
     content: "";
 
     position: absolute;
@@ -318,11 +409,168 @@ body {
         rgba(165,165,165,.20);
 
     box-shadow:
-        35px 4px 0 4px rgba(175,175,175,.17),
-        15px 38px 0 2px rgba(155,155,155,.18),
-        49px 48px 0 5px rgba(170,170,170,.14),
-        3px 56px 0 3px rgba(180,180,180,.14);
+
+        35px 4px 0 4px
+        rgba(175,175,175,.17),
+
+        15px 38px 0 2px
+        rgba(155,155,155,.18),
+
+        49px 48px 0 5px
+        rgba(170,170,170,.14),
+
+        3px 56px 0 3px
+        rgba(180,180,180,.14);
+
+    pointer-events: none;
 }
+
+
+
+/* ==================================================
+   HOVER LUNA
+================================================== */
+
+.luna:hover {
+
+    transform:
+
+        translateX(-50%)
+        scale(1.05);
+
+    box-shadow:
+
+        0 0 15px
+        rgba(255,255,255,.90),
+
+        0 0 35px
+        rgba(220,245,255,.50),
+
+        0 0 65px
+        rgba(180,225,255,.25);
+}
+
+
+
+.luna:active {
+
+    transform:
+
+        translateX(-50%)
+        scale(.97);
+}
+
+
+
+/* ==================================================
+   ONDA DE LA LUNA
+================================================== */
+
+.luna-onda {
+
+    position: absolute;
+
+    inset: 0;
+
+    border:
+
+        2px solid
+        rgba(220,245,255,.75);
+
+    border-radius: 50%;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+
+.luna-activa
+.luna-onda {
+
+    animation:
+
+        ondaLuna
+        1.1s
+        ease-out
+        forwards;
+}
+
+
+
+@keyframes ondaLuna {
+
+    0% {
+
+        opacity: .9;
+
+        transform:
+            scale(.45);
+    }
+
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            scale(2.25);
+    }
+
+}
+
+
+
+/* ==================================================
+   CONCENTRACIÓN DE LA LUNA
+================================================== */
+
+.luna-activa {
+
+    animation:
+
+        concentrarLuna
+        .9s
+        ease-in-out;
+}
+
+
+
+@keyframes concentrarLuna {
+
+    0% {
+
+        filter:
+            brightness(1);
+    }
+
+
+    55% {
+
+        filter:
+            brightness(1.55);
+
+        box-shadow:
+
+            0 0 20px white,
+
+            0 0 50px
+            rgba(195,235,255,.75),
+
+            0 0 95px
+            rgba(150,210,255,.35);
+    }
+
+
+    100% {
+
+        filter:
+            brightness(1);
+    }
+
+}
+
 
 
 /* ==================================================
@@ -330,6 +578,7 @@ body {
 ================================================== */
 
 .flor-eterna {
+
     position: absolute;
 
     left: 50%;
@@ -345,11 +594,13 @@ body {
 }
 
 
+
 /* ==================================================
    CÚPULA
 ================================================== */
 
 .cupula {
+
     position: absolute;
 
     left: 50%;
@@ -364,29 +615,46 @@ body {
     overflow: hidden;
 
     border:
+
         2px solid
         rgba(210,235,255,.30);
 
     border-radius:
+
         150px
         150px
         36px
         36px;
 
     background:
+
         linear-gradient(
+
             100deg,
+
             rgba(255,255,255,.08),
-            rgba(255,255,255,.015) 30%,
+
+            rgba(255,255,255,.015)
+            30%,
+
             transparent 60%,
+
             rgba(190,225,255,.05)
+
         );
 
     box-shadow:
-        inset 12px 0 25px rgba(255,255,255,.04),
-        inset -10px 0 20px rgba(150,210,255,.04),
-        0 0 18px rgba(180,225,255,.08);
+
+        inset 12px 0 25px
+        rgba(255,255,255,.04),
+
+        inset -10px 0 20px
+        rgba(150,210,255,.04),
+
+        0 0 18px
+        rgba(180,225,255,.08);
 }
+
 
 
 /* ==================================================
@@ -394,6 +662,7 @@ body {
 ================================================== */
 
 .reflejo {
+
     position: absolute;
 
     border-radius: 50%;
@@ -403,7 +672,9 @@ body {
     pointer-events: none;
 }
 
+
 .reflejo-1 {
+
     top: 80px;
     left: 25px;
 
@@ -411,17 +682,24 @@ body {
     height: 260px;
 
     background:
+
         linear-gradient(
+
             transparent,
+
             white,
+
             transparent
+
         );
 
     filter:
         blur(1px);
 }
 
+
 .reflejo-2 {
+
     top: 105px;
     right: 28px;
 
@@ -429,12 +707,18 @@ body {
     height: 180px;
 
     background:
+
         linear-gradient(
+
             transparent,
+
             #cdefff,
+
             transparent
+
         );
 }
+
 
 
 /* ==================================================
@@ -442,6 +726,7 @@ body {
 ================================================== */
 
 .ramo {
+
     position: absolute;
 
     left: 50%;
@@ -454,6 +739,7 @@ body {
     height: 360px;
 
     animation:
+
         flotar
         5s
         ease-in-out
@@ -462,28 +748,38 @@ body {
     z-index: 6;
 }
 
+
+
 @keyframes flotar {
 
     0%,
     100% {
+
         transform:
+
             translateX(-50%)
             translateY(0);
     }
 
+
     50% {
+
         transform:
+
             translateX(-50%)
             translateY(-8px);
     }
+
 }
 
 
+
 /* ==================================================
-   GRUPO AZUL
+   GRUPO CELESTE
 ================================================== */
 
 .grupo-celeste {
+
     position: absolute;
 
     left: 50%;
@@ -499,11 +795,13 @@ body {
 }
 
 
+
 /* ==================================================
-   FLOR ORGÁNICA
+   FLOR
 ================================================== */
 
 .flor {
+
     position: absolute;
 
     width: 48px;
@@ -511,9 +809,13 @@ body {
 }
 
 
-/* pétalo común */
+
+/* ==================================================
+   PÉTALO
+================================================== */
 
 .flor .p {
+
     position: absolute;
 
     left: 50%;
@@ -526,70 +828,104 @@ body {
         2px 50%;
 
     border-radius:
+
         85% 45%
         75% 35%;
 }
 
 
+
 /* ==================================================
-   AZULES
+   FLORES AZULES
 ================================================== */
 
 .flor.azul .p {
+
     background:
+
         linear-gradient(
+
             145deg,
+
             var(--azul-1) 5%,
+
             var(--azul-2) 48%,
+
             var(--azul-3) 100%
+
         );
 
     box-shadow:
-        inset -3px -2px 5px rgba(65,90,125,.15),
-        inset 2px 2px 4px rgba(255,255,255,.20);
+
+        inset -3px -2px 5px
+        rgba(65,90,125,.15),
+
+        inset 2px 2px 4px
+        rgba(255,255,255,.20);
 }
 
 
-/* orientación irregular */
+
+/* ==================================================
+   ORIENTACIÓN PÉTALOS
+================================================== */
 
 .flor .a {
+
     transform:
+
         translate(-2px,-50%)
         rotate(-8deg);
 }
 
+
 .flor .b {
+
     transform:
+
         translate(-2px,-50%)
         rotate(64deg)
         scale(.96);
 }
 
+
 .flor .c {
+
     transform:
+
         translate(-2px,-50%)
         rotate(137deg)
         scale(1.02);
 }
 
+
 .flor .d {
+
     transform:
+
         translate(-2px,-50%)
         rotate(211deg)
         scale(.93);
 }
 
+
 .flor .e {
+
     transform:
+
         translate(-2px,-50%)
         rotate(286deg)
         scale(1.04);
 }
 
 
-/* centro */
+
+/* ==================================================
+   CENTRO DE FLOR
+================================================== */
 
 .flor .centro {
+
     position: absolute;
 
     left: 50%;
@@ -604,18 +940,27 @@ body {
     border-radius: 50%;
 
     background:
+
         radial-gradient(
+
             circle,
+
             #fffbe4 0 25%,
+
             #e9c965 40%,
+
             #b98b42 100%
+
         );
 
     box-shadow:
-        0 0 2px rgba(255,255,255,.5);
+
+        0 0 2px
+        rgba(255,255,255,.5);
 
     z-index: 5;
 }
+
 
 
 /* ==================================================
@@ -623,166 +968,220 @@ body {
 ================================================== */
 
 .f1 {
+
     left: 92px;
     top: 0;
 
     transform:
+
         rotate(-10deg)
         scale(.90);
 }
 
+
 .f2 {
+
     left: 63px;
     top: 13px;
 
     transform:
+
         rotate(8deg)
         scale(.96);
 }
 
+
 .f3 {
+
     left: 119px;
     top: 15px;
 
     transform:
+
         rotate(-4deg)
         scale(1.03);
 }
 
+
 .f4 {
+
     left: 145px;
     top: 29px;
 
     transform:
+
         rotate(13deg)
         scale(.92);
 }
 
+
 .f5 {
+
     left: 35px;
     top: 35px;
 
     transform:
+
         rotate(-15deg)
         scale(.92);
 }
 
+
 .f6 {
+
     left: 65px;
     top: 42px;
 
     transform:
+
         rotate(5deg)
         scale(1.04);
 }
 
+
 .f7 {
+
     left: 96px;
     top: 41px;
 
     transform:
+
         rotate(-9deg)
         scale(1.08);
 }
 
+
 .f8 {
+
     left: 128px;
     top: 48px;
 
     transform:
+
         rotate(12deg)
         scale(1);
 }
 
+
 .f9 {
+
     left: 158px;
     top: 52px;
 
     transform:
+
         rotate(-6deg)
         scale(.91);
 }
 
+
 .f10 {
+
     left: 21px;
     top: 67px;
 
     transform:
+
         rotate(10deg)
         scale(.91);
 }
 
+
 .f11 {
+
     left: 53px;
     top: 71px;
 
     transform:
+
         rotate(-10deg)
         scale(1);
 }
 
+
 .f12 {
+
     left: 86px;
     top: 70px;
 
     transform:
+
         rotate(5deg)
         scale(1.08);
 }
 
+
 .f13 {
+
     left: 118px;
     top: 75px;
 
     transform:
+
         rotate(-11deg)
         scale(1.01);
 }
 
+
 .f14 {
+
     left: 150px;
     top: 78px;
 
     transform:
+
         rotate(10deg)
         scale(.93);
 }
 
+
 .f15 {
+
     left: 42px;
     top: 101px;
 
     transform:
+
         rotate(-8deg)
         scale(.91);
 }
 
+
 .f16 {
+
     left: 75px;
     top: 103px;
 
     transform:
+
         rotate(13deg)
         scale(.98);
 }
 
+
 .f17 {
+
     left: 108px;
     top: 104px;
 
     transform:
+
         rotate(-5deg)
         scale(.96);
 }
 
+
 .f18 {
+
     left: 139px;
     top: 108px;
 
     transform:
+
         rotate(9deg)
         scale(.87);
 }
+
 
 
 /* ==================================================
@@ -790,80 +1189,120 @@ body {
 ================================================== */
 
 .flor.blanca {
+
     width: 72px;
     height: 72px;
 
     z-index: 12;
 
     filter:
+
         drop-shadow(
+
             0 5px 7px
             rgba(0,0,0,.15)
+
         );
 }
 
+
+
 .flor.blanca .p {
+
     width: 39px;
     height: 31px;
 
     border-radius:
+
         90% 42%
         84% 40%;
 
     background:
+
         linear-gradient(
+
             145deg,
+
             #ffffff 5%,
+
             #f4f5f6 55%,
+
             #dfe3e6
+
         );
 
     box-shadow:
-        inset -5px -3px 8px rgba(125,135,145,.13),
-        inset 3px 3px 6px rgba(255,255,255,.55);
+
+        inset -5px -3px 8px
+        rgba(125,135,145,.13),
+
+        inset 3px 3px 6px
+        rgba(255,255,255,.55);
 }
 
+
+
 .flor.blanca .centro {
+
     width: 13px;
     height: 13px;
 
     background:
+
         radial-gradient(
+
             circle at 40% 35%,
+
             #ffffff,
+
             #eee9dd 60%,
+
             #d5cec0
+
         );
 
     box-shadow:
-        0 0 0 5px rgba(255,255,255,.55),
-        inset -2px -2px 3px rgba(130,130,125,.16);
+
+        0 0 0 5px
+        rgba(255,255,255,.55),
+
+        inset -2px -2px 3px
+        rgba(130,130,125,.16);
 }
 
+
+
 .blanca-1 {
+
     left: 0;
     top: 28px;
 
     transform:
+
         rotate(-14deg)
         scale(.77);
 }
 
+
 .blanca-2 {
+
     right: -5px;
     top: 143px;
 
     transform:
+
         rotate(12deg)
         scale(.72);
 }
 
 
+
 /* ==================================================
-   MINI FLORES BLANCAS
+   MINI FLORES
 ================================================== */
 
 .mini-flores {
+
     position: absolute;
 
     width: 80px;
@@ -872,58 +1311,84 @@ body {
     z-index: 7;
 }
 
+
+
 .mini-flores i {
+
     position: absolute;
 
     width: 11px;
     height: 10px;
 
     background:
+
         radial-gradient(
+
             circle at 40% 40%,
+
             white,
+
             #e8e8e8
+
         );
 
     border-radius:
+
         70% 40%
         65% 40%;
 
     box-shadow:
-        0 0 3px rgba(255,255,255,.35);
+
+        0 0 3px
+        rgba(255,255,255,.35);
 }
 
+
+
 .mini-flores i:nth-child(1) {
+
     left: 34px;
     top: 0;
 }
 
+
 .mini-flores i:nth-child(2) {
+
     left: 5px;
     top: 22px;
 }
 
+
 .mini-flores i:nth-child(3) {
+
     right: 4px;
     top: 28px;
 }
 
+
 .mini-flores i:nth-child(4) {
+
     left: 26px;
     top: 52px;
 }
 
+
 .mini-flores i:nth-child(5) {
+
     right: 12px;
     top: 70px;
 }
 
+
 .mini-1 {
+
     left: 2px;
     top: 118px;
 }
 
+
 .mini-2 {
+
     right: 0;
     top: 54px;
 
@@ -931,7 +1396,9 @@ body {
         rotate(10deg);
 }
 
+
 .mini-3 {
+
     left: 103px;
     top: 148px;
 
@@ -940,28 +1407,35 @@ body {
 }
 
 
+
 /* ==================================================
-   TALLOS EN S
+   TALLOS
 ================================================== */
 
 .tallo-curvo {
+
     position: absolute;
 
     width: 65px;
     height: 195px;
 
     border-left:
+
         5px solid
         var(--verde);
 
     border-radius:
+
         55% 0
         0 55%;
 
     z-index: 2;
 }
 
+
+
 .tallo-curvo::after {
+
     content: "";
 
     position: absolute;
@@ -973,47 +1447,60 @@ body {
     height: 105px;
 
     border-right:
+
         5px solid
         var(--verde-claro);
 
     border-radius:
+
         0 55%
         55% 0;
 }
 
+
 .tallo-1 {
+
     left: 100px;
     top: 140px;
 
     transform:
+
         rotate(4deg)
         scaleX(.72);
 }
 
+
 .tallo-2 {
+
     left: 128px;
     top: 143px;
 
     transform:
+
         rotate(-5deg)
         scaleX(.67);
 }
 
+
 .tallo-3 {
+
     left: 83px;
     top: 154px;
 
     transform:
+
         rotate(12deg)
         scaleX(.60);
 }
 
 
+
 /* ==================================================
-   PÉTALOS CAYENDO
+   PÉTALOS CAYENDO DEL RAMO
 ================================================== */
 
 .petalo-caida {
+
     position: absolute;
 
     top: -25px;
@@ -1022,44 +1509,59 @@ body {
     height: 9px;
 
     border-radius:
+
         80% 30%
         70% 30%;
 
     background:
+
         linear-gradient(
+
             135deg,
+
             #edf8ff,
+
             #a6c9e8
+
         );
 
     opacity: .75;
 
     animation:
+
         caer
         9s
         linear
         infinite;
 }
 
+
 .petalo-1 {
+
     left: 50px;
 }
 
+
 .petalo-2 {
+
     left: 100px;
 
     animation-delay:
         2s;
 }
 
+
 .petalo-3 {
+
     left: 160px;
 
     animation-delay:
         4s;
 }
 
+
 .petalo-4 {
+
     left: 210px;
 
     animation-delay:
@@ -1069,7 +1571,9 @@ body {
         white;
 }
 
+
 .petalo-5 {
+
     left: 250px;
 
     animation-delay:
@@ -1077,10 +1581,13 @@ body {
 }
 
 
+
 @keyframes caer {
 
     0% {
+
         transform:
+
             translateY(-20px)
             translateX(0)
             rotate(0deg);
@@ -1088,26 +1595,36 @@ body {
         opacity: 0;
     }
 
+
     10% {
+
         opacity: .7;
     }
 
+
     50% {
+
         transform:
+
             translateY(250px)
             translateX(20px)
             rotate(180deg);
     }
 
+
     100% {
+
         transform:
+
             translateY(480px)
             translateX(-15px)
             rotate(360deg);
 
         opacity: 0;
     }
+
 }
+
 
 
 /* ==================================================
@@ -1115,6 +1632,7 @@ body {
 ================================================== */
 
 .luces {
+
     position: absolute;
 
     left: 50%;
@@ -1127,7 +1645,10 @@ body {
     height: 45px;
 }
 
+
+
 .luz {
+
     position: absolute;
 
     width: 7px;
@@ -1139,23 +1660,33 @@ body {
         var(--luz);
 
     box-shadow:
+
         0 0 5px white,
-        0 0 10px #d8f5ff,
-        0 0 17px rgba(150,220,255,.6);
+
+        0 0 10px
+        #d8f5ff,
+
+        0 0 17px
+        rgba(150,220,255,.6);
 
     animation:
+
         luz
         3s
         ease-in-out
         infinite;
 }
 
+
 .luz-1 {
+
     left: 15px;
     bottom: 10px;
 }
 
+
 .luz-2 {
+
     left: 50px;
     bottom: 26px;
 
@@ -1163,7 +1694,9 @@ body {
         .5s;
 }
 
+
 .luz-3 {
+
     left: 85px;
     bottom: 12px;
 
@@ -1171,7 +1704,9 @@ body {
         1.1s;
 }
 
+
 .luz-4 {
+
     left: 120px;
     bottom: 28px;
 
@@ -1179,7 +1714,9 @@ body {
         1.7s;
 }
 
+
 .luz-5 {
+
     left: 160px;
     bottom: 12px;
 
@@ -1187,7 +1724,9 @@ body {
         .7s;
 }
 
+
 .luz-6 {
+
     left: 198px;
     bottom: 26px;
 
@@ -1195,7 +1734,9 @@ body {
         1.4s;
 }
 
+
 .luz-7 {
+
     right: 8px;
     bottom: 10px;
 
@@ -1204,23 +1745,29 @@ body {
 }
 
 
+
 @keyframes luz {
 
     0%,
     100% {
+
         opacity: .25;
 
         transform:
             scale(.7);
     }
 
+
     50% {
+
         opacity: 1;
 
         transform:
             scale(1.3);
     }
+
 }
+
 
 
 /* ==================================================
@@ -1228,6 +1775,7 @@ body {
 ================================================== */
 
 .base {
+
     position: absolute;
 
     left: 50%;
@@ -1240,25 +1788,39 @@ body {
     height: 75px;
 
     border-radius:
+
         50% 50%
         42% 42%;
 
     background:
+
         linear-gradient(
+
             to bottom,
+
             var(--madera-clara),
+
             var(--madera) 55%,
+
             var(--madera-oscura)
+
         );
 
     box-shadow:
-        0 12px 24px rgba(0,0,0,.45),
-        inset 0 4px 5px rgba(255,255,255,.22);
+
+        0 12px 24px
+        rgba(0,0,0,.45),
+
+        inset 0 4px 5px
+        rgba(255,255,255,.22);
 
     z-index: 12;
 }
 
+
+
 .base-superior {
+
     position: absolute;
 
     top: -8px;
@@ -1273,16 +1835,587 @@ body {
     border-radius: 50%;
 
     background:
+
         radial-gradient(
+
             ellipse,
+
             #d5bd96,
+
             #b39468 72%,
+
             #8f704d
+
         );
 
     border:
-        2px solid rgba(90,65,40,.35);
+
+        2px solid
+        rgba(90,65,40,.35);
 }
+
+
+
+/* ==================================================
+   CAPA DE EFECTOS
+================================================== */
+
+.efectos-luna {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 9999;
+}
+
+
+
+/* ==================================================
+   ENERGÍA ESPIRAL
+================================================== */
+
+.energia-espiral {
+
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    margin-left: -3.5px;
+    margin-top: -3.5px;
+
+    border-radius: 50%;
+
+    background:
+        #eefaff;
+
+    box-shadow:
+
+        0 0 5px
+        white,
+
+        0 0 11px
+        #c5edff,
+
+        0 0 20px
+        rgba(105,195,255,.75);
+
+    animation:
+
+        concentrarEspiral
+        .9s
+        cubic-bezier(.55,.05,.4,1)
+        forwards;
+}
+
+
+
+@keyframes concentrarEspiral {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+
+            translate(
+                var(--inicio-x),
+                var(--inicio-y)
+            )
+
+            scale(.35);
+    }
+
+
+    15% {
+
+        opacity: 1;
+    }
+
+
+    55% {
+
+        opacity: 1;
+
+        transform:
+
+            translate(
+                var(--medio-x),
+                var(--medio-y)
+            )
+
+            scale(.85);
+    }
+
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+
+            translate(0,0)
+
+            rotate(720deg)
+
+            scale(1.4);
+    }
+
+}
+
+
+
+/* ==================================================
+   DESTELLO CENTRAL
+================================================== */
+
+.destello-luna {
+
+    position: absolute;
+
+    width: 20px;
+    height: 20px;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius: 50%;
+
+    background:
+        white;
+
+    box-shadow:
+
+        0 0 15px white,
+
+        0 0 40px
+        #dff7ff,
+
+        0 0 80px
+        #9ddcff,
+
+        0 0 130px
+        rgba(120,195,255,.5);
+
+    animation:
+
+        explosionDestello
+        .65s
+        ease-out
+        forwards;
+}
+
+
+
+@keyframes explosionDestello {
+
+    0% {
+
+        opacity: 1;
+
+        transform:
+
+            translate(-50%,-50%)
+            scale(.3);
+    }
+
+
+    55% {
+
+        opacity: 1;
+
+        transform:
+
+            translate(-50%,-50%)
+            scale(4.5);
+    }
+
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+
+            translate(-50%,-50%)
+            scale(8);
+    }
+
+}
+
+
+
+/* ==================================================
+   PARTÍCULAS DE EXPLOSIÓN
+================================================== */
+
+.particula-explosion {
+
+    position: absolute;
+
+    transform-origin: center;
+
+    pointer-events: none;
+
+    animation:
+
+        explosionParticula
+        5.5s
+        cubic-bezier(.15,.7,.25,1)
+        forwards;
+
+    will-change:
+
+        transform,
+        opacity;
+}
+
+
+
+@keyframes explosionParticula {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+
+            translate(-50%,-50%)
+
+            scale(.15)
+
+            rotate(0deg);
+    }
+
+
+    6% {
+
+        opacity: 1;
+    }
+
+
+    30% {
+
+        opacity: 1;
+
+        transform:
+
+            translate(
+
+                calc(
+                    -50% +
+                    var(--dx)
+                ),
+
+                calc(
+                    -50% +
+                    var(--dy)
+                )
+
+            )
+
+            scale(
+                var(--escala)
+            )
+
+            rotate(180deg);
+    }
+
+
+    72% {
+
+        opacity: .95;
+    }
+
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+
+            translate(
+
+                calc(
+                    -50% +
+                    var(--dx-final)
+                ),
+
+                calc(
+                    -50% +
+                    var(--dy-final)
+                )
+
+            )
+
+            scale(
+                var(--escala)
+            )
+
+            rotate(
+                var(--rotacion)
+            );
+    }
+
+}
+
+
+
+/* ==================================================
+   CORAZONES
+================================================== */
+
+.fx-corazon {
+
+    position: absolute;
+
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    filter:
+
+        drop-shadow(
+            0 0 6px
+            rgba(255,40,75,.5)
+        );
+}
+
+
+.fx-corazon::before {
+
+    content: "❤";
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 27px;
+
+    line-height: 1;
+
+    color:
+        #ef244a;
+
+    text-shadow:
+
+        0 0 4px
+        rgba(255,100,120,.7),
+
+        0 0 9px
+        rgba(220,10,55,.35);
+}
+
+
+
+/* ==================================================
+   FLORES DE LA EXPLOSIÓN
+================================================== */
+
+.fx-flor {
+
+    position: absolute;
+
+    width: 30px;
+    height: 30px;
+
+    filter:
+
+        drop-shadow(
+
+            0 2px 3px
+            rgba(0,0,0,.12)
+
+        );
+}
+
+
+
+.fx-petalo {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 16px;
+    height: 13px;
+
+    transform-origin:
+        1px 50%;
+
+    border-radius:
+
+        85% 45%
+        75% 35%;
+}
+
+
+
+.fx-p1 {
+
+    transform:
+
+        translate(-1px,-50%)
+        rotate(-8deg);
+}
+
+
+.fx-p2 {
+
+    transform:
+
+        translate(-1px,-50%)
+        rotate(64deg);
+}
+
+
+.fx-p3 {
+
+    transform:
+
+        translate(-1px,-50%)
+        rotate(137deg);
+}
+
+
+.fx-p4 {
+
+    transform:
+
+        translate(-1px,-50%)
+        rotate(211deg);
+}
+
+
+.fx-p5 {
+
+    transform:
+
+        translate(-1px,-50%)
+        rotate(286deg);
+}
+
+
+
+/* centro */
+
+.fx-centro {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 5px;
+    height: 5px;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius: 50%;
+
+    z-index: 2;
+}
+
+
+
+/* ==================================================
+   FLOR BLANCA EXPLOSIÓN
+================================================== */
+
+.fx-flor-blanca
+.fx-petalo {
+
+    background:
+
+        linear-gradient(
+
+            145deg,
+
+            #ffffff,
+
+            #f2f3f4 55%,
+
+            #dfe2e5
+
+        );
+
+    box-shadow:
+
+        inset -2px -1px 3px
+        rgba(120,130,140,.12);
+}
+
+
+
+.fx-flor-blanca
+.fx-centro {
+
+    background:
+        #efe4b1;
+
+    box-shadow:
+
+        0 0 3px
+        rgba(255,255,255,.8);
+}
+
+
+
+/* ==================================================
+   FLOR CELESTE EXPLOSIÓN
+================================================== */
+
+.fx-flor-celeste
+.fx-petalo {
+
+    background:
+
+        linear-gradient(
+
+            145deg,
+
+            #edf7ff,
+
+            #b7d7f2 48%,
+
+            #83aed5
+
+        );
+
+    box-shadow:
+
+        inset -2px -1px 3px
+        rgba(70,100,135,.16);
+}
+
+
+
+.fx-flor-celeste
+.fx-centro {
+
+    background:
+        #f4d97c;
+
+    box-shadow:
+
+        0 0 3px
+        rgba(255,245,195,.8);
+}
+
 
 
 /* ==================================================
@@ -1291,18 +2424,23 @@ body {
 
 @media (max-width: 600px) {
 
+
     .titulo {
+
         top: 20px;
 
         width: 92%;
 
-        font-size: 3.2rem;
+        font-size:
+            3.2rem;
 
         line-height: 1;
     }
 
 
+
     .luna {
+
         top: 105px;
 
         left: 50%;
@@ -1316,7 +2454,29 @@ body {
     }
 
 
+
+    .luna:hover {
+
+        transform:
+
+            translateX(-50%)
+            scale(1.04);
+    }
+
+
+
+    .luna:active {
+
+        transform:
+
+            translateX(-50%)
+            scale(.95);
+    }
+
+
+
     .luna::before {
+
         width: 8px;
         height: 8px;
 
@@ -1324,21 +2484,92 @@ body {
         left: 17px;
 
         box-shadow:
-            24px 3px 0 3px rgba(175,175,175,.17),
-            10px 26px 0 2px rgba(155,155,155,.18),
-            34px 33px 0 4px rgba(170,170,170,.14),
-            2px 39px 0 2px rgba(180,180,180,.14);
+
+            24px 3px 0 3px
+            rgba(175,175,175,.17),
+
+            10px 26px 0 2px
+            rgba(155,155,155,.18),
+
+            34px 33px 0 4px
+            rgba(170,170,170,.14),
+
+            2px 39px 0 2px
+            rgba(180,180,180,.14);
     }
 
 
+
     .flor-eterna {
+
         bottom: 5px;
 
         transform:
+
             translateX(-50%)
             scale(.78);
 
         transform-origin:
             bottom center;
     }
+
+
+
+    .energia-espiral {
+
+        width: 6px;
+        height: 6px;
+    }
+
+
+
+    .fx-corazon {
+
+        width: 22px;
+        height: 22px;
+    }
+
+
+
+    .fx-corazon::before {
+
+        font-size:
+            22px;
+    }
+
+
+
+    .fx-flor {
+
+        width: 25px;
+        height: 25px;
+    }
+
+
+
+    .fx-petalo {
+
+        width: 14px;
+        height: 11px;
+    }
+
+}
+
+
+
+/* ==================================================
+   REDUCIR ANIMACIÓN SI EL USUARIO LO PREFIERE
+================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .estrella,
+    .ramo,
+    .petalo-caida,
+    .luz {
+
+        animation-duration:
+            8s;
+    }
+
 }
