@@ -497,9 +497,6 @@
 
 
 </main>
-
-
-
 <!-- ==================================================
      JAVASCRIPT
 ================================================== -->
@@ -507,10 +504,14 @@
 <script>
 
     const luna =
-        document.getElementById("lunaBtn");
+        document.getElementById(
+            "lunaBtn"
+        );
 
     const efectos =
-        document.getElementById("efectosLuna");
+        document.getElementById(
+            "efectosLuna"
+        );
 
 
     let animando = false;
@@ -547,7 +548,9 @@
                 rect.height / 2;
 
 
-            /* concentración */
+            /* ==========================================
+               CONCENTRACIÓN ORIGINAL
+            ========================================== */
 
             luna.classList.add(
                 "luna-activa"
@@ -560,7 +563,12 @@
             );
 
 
-            /* explosión */
+            /* ==================================================
+               DESPUÉS DE LA ESPIRAL
+
+               90% = EFECTO NORMAL
+               10% = EASTER EGG DEL GATO
+            ================================================== */
 
             setTimeout(
                 function () {
@@ -571,17 +579,37 @@
                     );
 
 
-                    crearExplosion(
-                        centroX,
-                        centroY
-                    );
+                    const easterEgg =
+                        Math.random() < 0.10;
+
+
+                    if (easterEgg) {
+
+                        crearEasterEggGato(
+                            centroX,
+                            centroY
+                        );
+
+                    } else {
+
+                        crearExplosion(
+                            centroX,
+                            centroY
+                        );
+
+                    }
 
                 },
                 900
             );
 
 
-            /* liberar nuevamente */
+            /* ==================================================
+               LIBERAR LA LUNA
+
+               Esperamos 5 segundos para que el easter egg
+               pueda terminar antes de otro clic.
+            ================================================== */
 
             setTimeout(
                 function () {
@@ -593,7 +621,7 @@
                     animando = false;
 
                 },
-                2600
+                1000
             );
 
         }
@@ -602,7 +630,340 @@
 
 
     /* ==================================================
-       ESPIRAL DE CONCENTRACIÓN
+       EASTER EGG DEL GATO
+    ================================================== */
+
+    function crearEasterEggGato(
+        cx,
+        cy
+    ) {
+
+        /* ==========================================
+           CORAZÓN GIGANTE
+        ========================================== */
+
+        const corazonGrande =
+            document.createElement(
+                "div"
+            );
+
+
+        corazonGrande.className =
+            "easter-corazon-grande";
+
+
+        corazonGrande.style.left =
+            cx + "px";
+
+
+        corazonGrande.style.top =
+            cy + "px";
+
+
+        efectos.appendChild(
+            corazonGrande
+        );
+
+
+
+        /* ==========================================
+           DESPUÉS APARECE LA PATA DESDE ARRIBA
+        ========================================== */
+
+        setTimeout(
+            function () {
+
+                const pata =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                pata.className =
+                    "easter-pata-gato";
+
+
+                pata.style.left =
+                    cx + "px";
+
+
+                pata.style.top =
+                    cy + "px";
+
+
+                /*
+                   Los dedos y la almohadilla
+                   se dibujan con el CSS.
+                */
+
+                pata.innerHTML = `
+
+                    <span class="easter-dedo d1"></span>
+
+                    <span class="easter-dedo d2"></span>
+
+                    <span class="easter-dedo d3"></span>
+
+                    <span class="easter-dedo d4"></span>
+
+                    <span class="easter-almohadilla"></span>
+
+                `;
+
+
+                efectos.appendChild(
+                    pata
+                );
+
+
+
+                /* ==========================================
+                   LA PATA GOLPEA EL CORAZÓN
+                ========================================== */
+
+                setTimeout(
+                    function () {
+
+                        corazonGrande.classList.add(
+                            "easter-golpeado"
+                        );
+
+                    },
+                    650
+                );
+
+
+
+                /* ==========================================
+                   CORAZÓN REVIENTA
+                ========================================== */
+
+                setTimeout(
+                    function () {
+
+                        corazonGrande.classList.remove(
+                            "easter-golpeado"
+                        );
+
+
+                        corazonGrande.classList.add(
+                            "easter-reventar"
+                        );
+
+
+                        explosionCorazonesEasterEgg(
+                            cx,
+                            cy
+                        );
+
+                    },
+                    850
+                );
+
+
+
+                /* ==========================================
+                   PATA REGRESA HACIA ARRIBA
+                ========================================== */
+
+                setTimeout(
+                    function () {
+
+                        pata.classList.add(
+                            "easter-pata-salir"
+                        );
+
+                    },
+                    1100
+                );
+
+
+
+                /* ==========================================
+                   LIMPIAR CORAZÓN Y PATA
+                ========================================== */
+
+                setTimeout(
+                    function () {
+
+                        pata.remove();
+
+                        corazonGrande.remove();
+
+                    },
+                    1900
+                );
+
+            },
+            900
+        );
+
+    }
+
+
+
+    /* ==================================================
+       EXPLOSIÓN DE MINI CORAZONES DEL EASTER EGG
+    ================================================== */
+
+    function explosionCorazonesEasterEgg(
+        cx,
+        cy
+    ) {
+
+        const cantidad =
+            60;
+
+
+        for (
+            let i = 0;
+            i < cantidad;
+            i++
+        ) {
+
+            const corazon =
+                document.createElement(
+                    "div"
+                );
+
+
+            corazon.className =
+                "easter-mini-corazon";
+
+
+            corazon.style.left =
+                cx + "px";
+
+
+            corazon.style.top =
+                cy + "px";
+
+
+
+            /* ==========================================
+               DIRECCIÓN ALEATORIA
+            ========================================== */
+
+            const angulo =
+                Math.random() *
+                Math.PI *
+                2;
+
+
+            const distancia =
+                90 +
+                Math.random() *
+                260;
+
+
+            const x =
+                Math.cos(
+                    angulo
+                ) *
+                distancia;
+
+
+            const y =
+                Math.sin(
+                    angulo
+                ) *
+                distancia;
+
+
+
+            /* ==========================================
+               POSICIÓN FINAL CON CAÍDA
+            ========================================== */
+
+            const xFinal =
+                x * 1.2;
+
+
+            const yFinal =
+                y * .45 +
+                420 +
+                Math.random() *
+                160;
+
+
+            const rotacion =
+                -500 +
+                Math.random() *
+                1000;
+
+
+            const escala =
+                .55 +
+                Math.random() *
+                .8;
+
+
+
+            corazon.style.setProperty(
+                "--easter-x",
+                x + "px"
+            );
+
+
+            corazon.style.setProperty(
+                "--easter-y",
+                y + "px"
+            );
+
+
+            corazon.style.setProperty(
+                "--easter-x-final",
+                xFinal + "px"
+            );
+
+
+            corazon.style.setProperty(
+                "--easter-y-final",
+                yFinal + "px"
+            );
+
+
+            corazon.style.setProperty(
+                "--easter-rotacion",
+                rotacion + "deg"
+            );
+
+
+            corazon.style.setProperty(
+                "--easter-escala",
+                escala
+            );
+
+
+            corazon.style.animationDelay =
+                (
+                    Math.random() *
+                    .12
+                ) + "s";
+
+
+            efectos.appendChild(
+                corazon
+            );
+
+
+            setTimeout(
+                function () {
+
+                    corazon.remove();
+
+                },
+                6000
+            );
+
+        }
+
+    }
+
+
+
+    /* ==================================================
+       ESPIRAL DE CONCENTRACIÓN ORIGINAL
     ================================================== */
 
     function crearEspiral(
@@ -610,7 +971,8 @@
         cy
     ) {
 
-        const cantidad = 32;
+        const cantidad =
+            32;
 
 
         for (
@@ -644,30 +1006,38 @@
 
 
             const inicioX =
-                Math.cos(angulo) *
+                Math.cos(
+                    angulo
+                ) *
                 radio;
 
 
             const inicioY =
-                Math.sin(angulo) *
+                Math.sin(
+                    angulo
+                ) *
                 radio;
 
 
-            /*
-                punto intermedio perpendicular
 
-                Esto crea una trayectoria
-                más parecida a una espiral.
+            /*
+               Punto intermedio perpendicular.
+               Esto conserva tu trayectoria
+               en forma de espiral.
             */
 
             const medioX =
-                -Math.sin(angulo) *
+                -Math.sin(
+                    angulo
+                ) *
                 radio *
                 .48;
 
 
             const medioY =
-                Math.cos(angulo) *
+                Math.cos(
+                    angulo
+                ) *
                 radio *
                 .48;
 
@@ -732,7 +1102,7 @@
 
 
     /* ==================================================
-       DESTELLO
+       DESTELLO ORIGINAL
     ================================================== */
 
     function crearDestello(
@@ -775,9 +1145,8 @@
     }
 
 
-
     /* ==================================================
-       EXPLOSIÓN
+       EXPLOSIÓN NORMAL ORIGINAL
     ================================================== */
 
     function crearExplosion(
@@ -797,6 +1166,8 @@
         const tipos = [];
 
 
+        /* 52 CORAZONES */
+
         for (
             let i = 0;
             i < 52;
@@ -810,6 +1181,8 @@
         }
 
 
+        /* 20 FLORES BLANCAS */
+
         for (
             let i = 0;
             i < 20;
@@ -822,6 +1195,8 @@
 
         }
 
+
+        /* 8 FLORES CELESTES */
 
         for (
             let i = 0;
@@ -837,7 +1212,9 @@
 
 
 
-        /* mezclar */
+        /* ==================================================
+           MEZCLAR LAS PARTÍCULAS
+        ================================================== */
 
         tipos.sort(
             function () {
@@ -851,6 +1228,10 @@
         );
 
 
+
+        /* ==================================================
+           CREAR EXPLOSIÓN
+        ================================================== */
 
         tipos.forEach(
             function (
@@ -897,10 +1278,11 @@
                     distancia;
 
 
+
                 /*
                     Después de explotar,
-                    la gravedad hace
-                    que comiencen a caer.
+                    la gravedad hace que
+                    comiencen a caer.
                 */
 
                 const dxFinal =
@@ -926,6 +1308,7 @@
                     .7 +
                     Math.random() *
                     .75;
+
 
 
                 particula.style.setProperty(
@@ -1001,7 +1384,7 @@
 
 
     /* ==================================================
-       CREAR PARTÍCULA
+       CREAR CADA PARTÍCULA
     ================================================== */
 
     function crearParticula(
@@ -1049,6 +1432,8 @@
         );
 
 
+        /* FLOR BLANCA */
+
         if (
             tipo ===
             "blanca"
@@ -1061,6 +1446,8 @@
         }
 
 
+        /* FLOR CELESTE */
+
         if (
             tipo ===
             "celeste"
@@ -1072,6 +1459,11 @@
 
         }
 
+
+
+        /* ==================================================
+           PÉTALOS DE LA FLOR
+        ================================================== */
 
         elemento.innerHTML = `
 
@@ -1093,6 +1485,8 @@
         return elemento;
 
     }
+
+
 
 </script>
 
